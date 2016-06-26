@@ -14,7 +14,7 @@ class ManualRepository extends \Doctrine\ORM\EntityRepository
      * @return string
      */
     public function prueba()
-    {
+    {   //TODO-IMPORTANT Begin a method for dev
         return 'ok';
     }
 }

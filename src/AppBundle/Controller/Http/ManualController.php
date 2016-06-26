@@ -17,6 +17,8 @@ use AppBundle\Form\ManualType;
  */
 class ManualController extends Controller
 {
+    private $manualEntity = 'AppBundle:Manual';
+
     /**
      * Lists all Manual entities.
      *
@@ -25,8 +27,7 @@ class ManualController extends Controller
      */
     public function indexAction()
     {
-        $manuals = $this->get('manual')->FindAll();
-        //$manual = $this->getRepository('AppBundle:Manual')->;
+        $manuals = $this->get('manual')->findAll();
         return $this->render('manual/index.html.twig', array(
             'manuals' => $manuals,
         ));
@@ -45,7 +46,7 @@ class ManualController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->get('manual')->CreateManual($manual);
+            $this->get('manual')->create($manual);
             return $this->redirectToRoute('manual_show', array('id' => $manual->getId()));
         }
 
@@ -84,9 +85,7 @@ class ManualController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($manual);
-            $em->flush();
+            $this->get('manual')->update($manual);
 
             return $this->redirectToRoute('manual_edit', array('id' => $manual->getId()));
         }
@@ -110,9 +109,7 @@ class ManualController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($manual);
-            $em->flush();
+            $this->get('manual')->delete($manual);
         }
 
         return $this->redirectToRoute('manual_index');

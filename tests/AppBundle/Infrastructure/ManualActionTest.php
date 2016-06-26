@@ -13,5 +13,8 @@ use Symfony\Bundle\SecurityBundle\Tests\Functional\WebTestCase;
 
 class ManualActionTest extends WebTestCase
 {
-    
+    public function testCheckFindManualIsObjectValid()
+    {
+        
+    }
 }
