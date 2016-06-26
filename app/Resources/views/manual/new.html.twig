@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Manual creation</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="{{ 'ACTIONS.create'|trans }}" />
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('manual_index') }}">{{ 'back_to_the_list'|trans }}</a>
+        </li>
+    </ul>
+{% endblock %}

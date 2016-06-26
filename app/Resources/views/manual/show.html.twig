@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Manual</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ manual.id }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'MSG.name'|trans }}</th>
+                <td>{{ manual.name }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'MSG.description'|trans }}</th>
+                <td>{{ manual.description }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'MSG.cover'|trans }}</th>
+                <td>{{ manual.cover }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'MSG.createdAt'|trans }}</th>
+                <td>{% if manual.createdAt %}{{ manual.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>{{ 'MSG.modifiedAt'|trans }}</th>
+                <td>{% if manual.modifiedAt %}{{ manual.modifiedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>{{ 'MSG.createdBy'|trans }}</th>
+                <td>{{ manual.createdBy }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'MSG.isActive'|trans }}</th>
+                <td>{% if manual.isActive %}Yes{% else %}No{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('manual_index') }}">{{ 'back_to_the_list'|trans }}</a>
+        </li>
+        <li>
+            <a href="{{ path('manual_edit', { 'id': manual.id }) }}">{{ 'ACTIONS.EDIT'|trans }}</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="{{ 'ACTIONS.delete'|trans }}">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

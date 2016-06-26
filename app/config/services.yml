@@ -12,3 +12,8 @@ services:
         arguments: 
               entityManager: "@doctrine.orm.entity_manager"
               session: "@session"
+    manual:
+         class: AppBundle\Infrastructure\ManualAction
+         arguments:
+               entityManager: "@doctrine.orm.entity_manager"
+               session: "@session"
