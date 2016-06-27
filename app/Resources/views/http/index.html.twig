@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+    <div class="jumbotron">
+        <h2>{{ 'manual_list'|trans }}</h2>
+
+
+        <p><a class="btn btn-primary btn-lg">{{ 'ACTIONS.create'|trans }}</a></p>
+    </div>
+    {% for manual in manuals %}
+        {% embed ':fragments:items.html.twig' %}
+            {% block idManual %}{{ manual.id }}{% endblock %}
+            {% block titleTutorial %}{{ manual.name }}{% endblock %}
+            {% block descriptionTutorial %}{{ manual.description }}{% endblock %}
+        {% endembed %}
+    {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,184 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <!-- Start: Section Menu -->
+    <div class="header-panel shadow-z-2">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-3">
+                    <h1>{{ manual.name|title }}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End: Section Menu -->
+
+    <!-- Start: Seccion main -->
+    <div class="container-fluid main">
+        <div class="row">
+            <nav class="col-xs-3 menu">
+                <ul>
+                    {% for section in sections %}
+                        <li class="{% if loop.first %}active{% endif %} withripple" data-target="#section-{{ section.id }}">{{ section.name }}</li>
+                    {% endfor %}
+                </ul>
+            </nav>
+            <div class="pages col-xs-9">
+                <div class="row">
+                    <div class="col-xs-10">
+                        {% for section in sections %}
+                            {% embed ':fragments:section.html.twig' %}
+                                {% set isActive = '' %}
+                                {% if loop.first == true %}
+                                    {% set isActive = 'active' %}
+                                {% else %}
+                                    {% set isActive = ''  %}
+                                {% endif %}
+                                {% block isActiveClass %}{{ isActive }}{% endblock %}
+                                {% block idSection %}section-{{ section.id }}{% endblock %}
+                                {% block titleSection %}{{ section.name }}{% endblock %}
+                                {% block contentSection %}{{ section.description }}{% endblock %}
+                            {% endembed %}
+                        {% endfor %}
+                    </div>
+                    <div class="col-xs-2">
+                        <button type="button" class="btn btn-fab btn-material-grey-200 opensource">
+                            <i class="material-icons">grade</i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Modals-->
+    <div id="simple-dialog" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <p>E dolore commodo, id anim aute sint cupidatat eu est anim tamen ad possumus,
+                        legam officia firmissimum. Eram deserunt domesticarum, iis ita praetermissum,
+                        nam aliquip quo probant, incididunt et occaecat an nam enim exquisitaque a
+                        nescius velit admodum, non ad cohaerescant, probant o nulla tempor. Aute aut te
+                        quis arbitror ubi ne aliqua consequat aliquip. Ad sunt laborum senserit, de do
+                        quem possumus. Sint tractavissent cupidatat aute possumus ita elit ad cupidatat.
+                        Arbitror ab fabulas o eu e veniam pariatur. Non voluptate comprehenderit ad nisi
+                        id voluptate. Quis distinguantur quibusdam quae mentitum o si minim illum nisi
+                        mandaremus.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="complete-dialog" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Dialog</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Fore aut non quem incididunt, varias reprehenderit deserunt quem offendit,
+                        cillum proident ne reprehenderit, quem ad laborum, quo possumus praetermissum,
+                        si ne illustriora, hic appellat coniunctione, do labore aliqua quo probant. In
+                        probant voluptatibus quo mentitum est laboris. Quorum mandaremus graviterque.
+                        Mentitum id velit, dolor aut litteris, ea varias illustriora, ita commodo ita
+                        ingeniis, iis nulla appellat incurreret, aut irure amet summis pariatur ita ubi
+                        quis dolore veniam proident, consequat sed ingeniis.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Dismiss</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="source-modal" class="modal fade" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Source Code</h4>
+                </div>
+                <div class="modal-body">
+                    <pre></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- End: Section main-->
+{% endblock %}
+{% block javascripts %}
+    <script>
+        window.page = window.location.hash || "#about";
+
+        $(document).ready(function () {
+            if (window.page != "#about") {
+                $(".menu").find("li[data-target=" + window.page + "]").trigger("click");
+            }
+        });
+
+        $(window).on("resize", function () {
+            $("html, body").height($(window).height());
+            $(".main, .menu").height($(window).height() - $(".header-panel").outerHeight());
+            $(".pages").height($(window).height());
+        }).trigger("resize");
+
+        $(".menu li").click(function () {
+            // Menu
+            if (!$(this).data("target")) return;
+            if ($(this).is(".active")) return;
+            $(".menu li").not($(this)).removeClass("active");
+            $(".page").not(page).removeClass("active").hide();
+            window.page = $(this).data("target");
+            var page = $(window.page);
+            window.location.hash = window.page;
+            $(this).addClass("active");
+
+
+            page.show();
+
+            var totop = setInterval(function () {
+                $(".pages").animate({scrollTop: 0}, 0);
+            }, 1);
+
+            setTimeout(function () {
+                page.addClass("active");
+                setTimeout(function () {
+                    clearInterval(totop);
+                }, 1000);
+            }, 100);
+        });
+
+        function cleanSource(html) {
+            var lines = html.split(/\n/);
+
+            lines.shift();
+            lines.splice(-1, 1);
+
+            var indentSize = lines[0].length - lines[0].trim().length,
+                    re = new RegExp(" {" + indentSize + "}");
+
+            lines = lines.map(function (line) {
+                if (line.match(re)) {
+                    line = line.substring(indentSize);
+                }
+
+                return line;
+            });
+
+            lines = lines.join("\n");
+
+            return lines;
+        }
+
+        $(".opensource").click(function () {
+            $.get(window.location.href, function (data) {
+                var html = $(data).find(window.page).html();
+                html = cleanSource(html);
+                $("#source-modal pre").text(html);
+                $("#source-modal").modal();
+            });
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% set idSection %}{% block idSection %}null{% endblock %}{% endset %}
+{% set isActiveClass %}{% block isActiveClass %}{% endblock %}{% endset %}
+
+<div class="well page {{ isActiveClass }}" id="{{ idSection }}">
+    <h1 class="header">{% block titleSection %}{% endblock %}</h1>
+    <div contenteditable="true">
+        {% block contentSection %}{{ 'content_null'|trans }}{% endblock %}
+    </div>
+</div>

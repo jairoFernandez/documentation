@@ -1,0 +1,13 @@
+{% set idManual %}{% block idManual %}null{% endblock %}{% endset %}
+<div class="">
+    <div class="col-lg-4">
+        <div class="well well-lg">
+            <img src="{{ asset('bundles/framework/images/logo_symfony.png') }}" />
+            <hr>
+            <h2>{% block titleTutorial %}{% endblock %}</h2>
+            {% block descriptionTutorial %}{% endblock %}
+            <br>
+            <a href="{{ path('list_menu', { 'id': idManual }) }}" class="btn btn-raised btn-success"><span class="glyphicon glyphicon-search"></span> {{ 'ACTIONS.SHOW'|trans }}</a>
+        </div>
+    </div>
+</div>
