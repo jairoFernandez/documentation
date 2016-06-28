@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2016-06-26T22:29:20Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
+  <file date="2016-06-27T21:38:52Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -24,6 +24,7 @@
         <target state="new">ACTIONS.create</target>
         <jms:reference-file line="8">/home/flia/Proyectos/Documentation/app/Resources/views/manual/new.html.twig</jms:reference-file>
         <jms:reference-file line="9">/home/flia/Proyectos/Documentation/app/Resources/views/http/index.html.twig</jms:reference-file>
+        <jms:reference-file line="25">/home/flia/Proyectos/Documentation/app/Resources/views/http/index.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="02033e3f6042d7c63d07af7983a9a6d8befaafba" resname="ACTIONS.delete">
         <source>ACTIONS.delete</source>
@@ -36,6 +37,11 @@
         <target state="new">Create a new entry</target>
         <jms:reference-file line="48">/home/flia/Proyectos/Documentation/app/Resources/views/manual/index.html.twig</jms:reference-file>
       </trans-unit>
+      <trans-unit id="62e334586020e8f06be87d7e5405e35cab83e61d" resname="BUTTON.cancel">
+        <source>BUTTON.cancel</source>
+        <target state="new">Cancel</target>
+        <jms:reference-file line="21">/home/flia/Proyectos/Documentation/app/Resources/views/fragments/modal.html.twig</jms:reference-file>
+      </trans-unit>
       <trans-unit id="3cf1a16722961cee88253047869cd923572d6bf4" resname="MSG.actions">
         <source>MSG.actions</source>
         <target state="new">Actions</target>
@@ -46,7 +52,7 @@
         <target state="new">Cover</target>
         <jms:reference-file line="12">/home/flia/Proyectos/Documentation/app/Resources/views/manual/index.html.twig</jms:reference-file>
         <jms:reference-file line="21">/home/flia/Proyectos/Documentation/app/Resources/views/manual/show.html.twig</jms:reference-file>
-        <jms:reference-file line="26">/home/flia/Proyectos/Documentation/app/../src/AppBundle/Form/ManualType.php</jms:reference-file>
+        <jms:reference-file line="28">/home/flia/Proyectos/Documentation/app/../src/AppBundle/Form/ManualType.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="aa241b773ea8402b9e1d89ddfd5030257681ba53" resname="MSG.createdAt">
         <source>MSG.createdAt</source>
@@ -59,21 +65,19 @@
         <target state="new">Created By</target>
         <jms:reference-file line="15">/home/flia/Proyectos/Documentation/app/Resources/views/manual/index.html.twig</jms:reference-file>
         <jms:reference-file line="33">/home/flia/Proyectos/Documentation/app/Resources/views/manual/show.html.twig</jms:reference-file>
-        <jms:reference-file line="29">/home/flia/Proyectos/Documentation/app/../src/AppBundle/Form/ManualType.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="49dd310c4506a87910f23c6c1830c0d340303a73" resname="MSG.description">
         <source>MSG.description</source>
         <target state="new">Description</target>
         <jms:reference-file line="11">/home/flia/Proyectos/Documentation/app/Resources/views/manual/index.html.twig</jms:reference-file>
         <jms:reference-file line="17">/home/flia/Proyectos/Documentation/app/Resources/views/manual/show.html.twig</jms:reference-file>
-        <jms:reference-file line="23">/home/flia/Proyectos/Documentation/app/../src/AppBundle/Form/ManualType.php</jms:reference-file>
+        <jms:reference-file line="24">/home/flia/Proyectos/Documentation/app/../src/AppBundle/Form/ManualType.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="d4defaa713e6930d8120deae8c1e7eb179ed625d" resname="MSG.isActive">
         <source>MSG.isActive</source>
         <target state="new">Status</target>
         <jms:reference-file line="16">/home/flia/Proyectos/Documentation/app/Resources/views/manual/index.html.twig</jms:reference-file>
         <jms:reference-file line="37">/home/flia/Proyectos/Documentation/app/Resources/views/manual/show.html.twig</jms:reference-file>
-        <jms:reference-file line="32">/home/flia/Proyectos/Documentation/app/../src/AppBundle/Form/ManualType.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="62bc6049ef3f5bf0d4417c0f4a265713338c1cc0" resname="MSG.modifiedAt">
         <source>MSG.modifiedAt</source>
@@ -110,6 +114,11 @@
         <target state="new">Manual list</target>
         <jms:reference-file line="4">/home/flia/Proyectos/Documentation/app/Resources/views/manual/index.html.twig</jms:reference-file>
         <jms:reference-file line="6">/home/flia/Proyectos/Documentation/app/Resources/views/http/index.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="daa7d8869d19347778cfcf8bf4d028746ae4b0af" resname="source.control">
+        <source>source.control</source>
+        <target state="new">source.control</target>
+        <jms:reference-file line="59">/home/flia/Proyectos/Documentation/app/Resources/views/http/list.html.twig</jms:reference-file>
       </trans-unit>
     </body>
   </file>

@@ -8,6 +8,7 @@
 
 namespace AppBundle\Controller\Http;
 
+use AppBundle\Entity\Manual;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -27,13 +28,22 @@ class HomeController extends Controller
      * Lists all Manual entities.
      *
      * @Route("/", name="index_manual")
-     * @Method("GET")
+     * @Method({"GET", "POST"})
      */
-    public function IndexAction()
+    public function IndexAction(Request $request)
     {
+        $manual = new Manual();
+        $form = $this->createForm('AppBundle\Form\ManualType', $manual);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->get('manual')->create($manual);
+            return $this->redirectToRoute('manual_show', array('id' => $manual->getId()));
+        }
         $manuals = $this->get('manual')->findAll();
         return $this->render('http/index.html.twig', array(
             'manuals' => $manuals,
+            'form' => $form->createView()
         ));
     }
 

@@ -17,19 +17,16 @@ class ManualType extends AbstractType
     {
         $builder
             ->add('name',null,array(
-                'label'=>'MSG.name'
+                'label'=>'MSG.name',
+                'attr'=>array('class'=>'form-control')
             ))
             ->add('description', null, array(
-                'label'=>'MSG.description'
+                'label'=>'MSG.description',
+                'attr'=>array('class'=>'form-control')
             ))
             ->add('cover',null,array(
-                'label' => 'MSG.cover'
-            ))
-            ->add('createdBy', null, array(
-                'label' => 'MSG.createdBy'
-            ))
-            ->add('isActive',null, array(
-                'label' => 'MSG.isActive'
+                'label' => 'MSG.cover',
+                'attr'=>array('class'=>'form-control')
             ))
         ;
     }
