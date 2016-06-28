@@ -1,51 +1,58 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>{{ 'manual_list'|trans }}</h1>
+    <div class="container-fluid main">
+{% embed ':fragments:section.html.twig' %}
+    {% block isActiveClass %}active{% endblock %}
+    {% block isEditable %}false{% endblock %}
+    {% block titleSection %}
+        <h1>{{ 'manual_list'|trans }}</h1>
+    {% endblock %}
+    {% block contentSection %}
+        <a href="{{ path('manual_new') }}" class="btn btn-raised btn-warning">{{ 'ACTIONS.new'|trans }}</a>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>{{ 'MSG.name'|trans }}</th>
+                        <th>{{ 'MSG.description'|trans }}</th>
+                        <th>{{ 'MSG.cover'|trans }}</th>
+                        <th>{{ 'MSG.createdAt'|trans }}</th>
+                        <th>{{ 'MSG.modifiedAt'|trans }}</th>
+                        <th>{{ 'MSG.createdBy'|trans }}</th>
+                        <th>{{ 'MSG.isActive'|trans }}</th>
+                        <th>{{ 'MSG.actions'|trans }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for manual in manuals %}
+                    <tr>
+                        <td><a href="{{ path('manual_show', { 'id': manual.id }) }}">{{ manual.id }}</a></td>
+                        <td>{{ manual.name }}</td>
+                        <td>{{ manual.description }}</td>
+                        <td>{{ manual.cover }}</td>
+                        <td>{% if manual.createdAt %}{{ manual.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <td>{% if manual.modifiedAt %}{{ manual.modifiedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <td>{{ manual.createdBy }}</td>
+                        <td>{% if manual.isActive %}Yes{% else %}No{% endif %}</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    <a href="{{ path('manual_show', { 'id': manual.id }) }}">{{ 'ACTIONS.SHOW'|trans }}</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('manual_edit', { 'id': manual.id }) }}">{{ 'ACTIONS.EDIT'|trans }}</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>{{ 'MSG.name'|trans }}</th>
-                <th>{{ 'MSG.description'|trans }}</th>
-                <th>{{ 'MSG.cover'|trans }}</th>
-                <th>{{ 'MSG.createdAt'|trans }}</th>
-                <th>{{ 'MSG.modifiedAt'|trans }}</th>
-                <th>{{ 'MSG.createdBy'|trans }}</th>
-                <th>{{ 'MSG.isActive'|trans }}</th>
-                <th>{{ 'MSG.actions'|trans }}</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for manual in manuals %}
-            <tr>
-                <td><a href="{{ path('manual_show', { 'id': manual.id }) }}">{{ manual.id }}</a></td>
-                <td>{{ manual.name }}</td>
-                <td>{{ manual.description }}</td>
-                <td>{{ manual.cover }}</td>
-                <td>{% if manual.createdAt %}{{ manual.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{% if manual.modifiedAt %}{{ manual.modifiedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ manual.createdBy }}</td>
-                <td>{% if manual.isActive %}Yes{% else %}No{% endif %}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('manual_show', { 'id': manual.id }) }}">{{ 'ACTIONS.SHOW'|trans }}</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('manual_edit', { 'id': manual.id }) }}">{{ 'ACTIONS.EDIT'|trans }}</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('manual_new') }}">{{ 'ACTIONS.new'|trans }}</a>
-        </li>
-    </ul>
+    {% endblock %}
+{% endembed %}
+    </div>
 {% endblock %}
