@@ -2,6 +2,7 @@
 
 namespace AppBundle\Form;
 
+use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -20,9 +21,16 @@ class ManualType extends AbstractType
                 'label'=>'MSG.name',
                 'attr'=>array('class'=>'form-control')
             ))
-            ->add('description', null, array(
+            ->add('description', CKEditorType::class, array(
                 'label'=>'MSG.description',
-                'attr'=>array('class'=>'form-control')
+                'config_name' => 'my_config',
+                'config' => array(
+                    'filebrowserBrowseRoute' => 'elfinder',
+                    'filebrowserBrowseRouteParameters' => array(
+                        'instance' => 'default',
+                        'homeFolder' => ''
+                    )
+                ),
             ))
             ->add('cover',null,array(
                 'label' => 'MSG.cover',

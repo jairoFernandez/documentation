@@ -19,7 +19,7 @@ class ManualController extends Controller
 {
     private $manualEntity = 'AppBundle:Manual';
 
-    /**
+    /**   
      * Lists all Manual entities.
      *
      * @Route("/", name="manual_index")

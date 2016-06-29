@@ -4,3 +4,6 @@ app:
     requirements:
             _locale: en|fr|es
 
+elfinder:
+     resource: "@FMElfinderBundle/Resources/config/routing.yml"
+
