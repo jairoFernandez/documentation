@@ -92,9 +92,9 @@ jms_di_extra:
             setRouter: ["@router"]
 
 ivory_ck_editor:
-    default_config: my_config
+    default_config: default
     configs:
-        my_config:
+        default:
             toolbar: full
             filebrowserBrowseRoute: elfinder
             filebrowserBrowseRouteParameters: []
@@ -109,7 +109,7 @@ fm_elfinder:
             #path_prefix: / # for setting custom assets path prefix, useful for non vhost configurations, i.e. http://127.0.0.1/mysite/
             #fullscreen: true|false # default is true, applies to simple and ckeditor editors
             #theme: smoothness # jquery theme, default is 'smoothness'
-            include_assets: true # disable if you want to manage loading of javascript and css assets manually
+            #include_assets: true # disable if you want to manage loading of javascript and css assets manually
             #visible_mime_types: ['image/png', 'image/jpg', 'image/jpeg'] # only show these mime types, defaults to show all
             connector:
                 #debug: true|false # defaults to false
@@ -118,11 +118,6 @@ fm_elfinder:
                         #show_hidden: true|false # defaults to false, hides dotfiles
                         driver: LocalFileSystem
                         path: uploads
-                        flysystem:
-                            type: local
-                            options:
-                              local:
-                                  path: %kernel.root_dir%/../web/uploads/
                         upload_allow: ['image/png', 'image/jpg', 'image/jpeg']
                         upload_deny: ['all']
                         upload_max_size: 2M # also file upload sizes restricted in php.ini

@@ -4,8 +4,6 @@
     <div class="container">
     <div class="jumbotron">
         <h2>{{ 'manual_list'|trans }}</h2>
-
-
         <p><a class="btn btn-raised btn-primary btn-lg" data-toggle="modal" data-target="#open-dialog-manual">{{ 'ACTIONS.create'|trans }}</a></p>
     </div>
     {% for manual in manuals %}
@@ -16,8 +14,10 @@
         {% endembed %}
     {% endfor %}
     </div>
+    
     {% embed ':fragments:modal.html.twig' %}
         {% block idModal %}open-dialog-manual{% endblock %}
+        {% block style %}width:1000px; margin-left: -35%{% endblock %}
         {% block titleModal %}{% endblock %}
         {% block contentModal %}
             {{ form_start(form) }}
@@ -26,4 +26,5 @@
             {{ form_end(form) }}
         {% endblock %}
     {% endembed %}
+   
 {% endblock %}

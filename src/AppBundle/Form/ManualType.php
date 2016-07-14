@@ -23,7 +23,7 @@ class ManualType extends AbstractType
             ))
             ->add('description', CKEditorType::class, array(
                 'label'=>'MSG.description',
-                'config_name' => 'my_config',
+                'config_name' => 'default',
                 'config' => array(
                     'filebrowserBrowseRoute' => 'elfinder',
                     'filebrowserBrowseRouteParameters' => array(
