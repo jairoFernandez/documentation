@@ -92,12 +92,47 @@ jms_di_extra:
             setRouter: ["@router"]
 
 ivory_ck_editor:
+    inline: false
     default_config: default
     configs:
         default:
-            toolbar: full
+            toolbar: neoToolbar_1  #full
             filebrowserBrowseRoute: elfinder
             filebrowserBrowseRouteParameters: []
+            extraPlugins: "codemirror,dialog,widget,lineutils,codesnippet"
+    plugins:
+        codemirror:
+            path:     "/bundles/app/plugins-ckeditor/codemirror/"
+            filename: "plugin.js" 
+        codesnippet:
+            path:     "/bundles/app/plugins-ckeditor/codesnippet/"
+            filename: "plugin.js" 
+        dialog:
+            path:     "/bundles/app/plugins-ckeditor/dialog/"
+            filename: "plugin.js" 
+        widget:
+            path:     "/bundles/app/plugins-ckeditor/widget/"
+            filename: "plugin.js" 
+        lineutils:
+            path:     "/bundles/app/plugins-ckeditor/lineutils/"
+            filename: "plugin.js" 
+
+    toolbars:
+        configs:
+            neoToolbar_1:
+                - ['CodeSnippet', 'CodeMirror']
+                - [ 'Source','-','Save','NewPage','DocProps','Preview','Print','-','Templates' ]
+                - [ 'Cut','Copy','Paste','PasteText','PasteFromWord','-','Undo','Redo' ]
+                - [ 'Find','Replace','-','SelectAll','-','SpellChecker', 'Scayt' ]
+                - [ 'Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton','HiddenField' ] 
+                #- "/"
+                - [ 'Bold','Italic','Underline','Strike','Subscript','Superscript','-','RemoveFormat' ]
+                - [ 'NumberedList','BulletedList','-','Outdent','Indent','-','Blockquote','CreateDiv','-','JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock','-','BidiLtr','BidiRtl' ]
+                - [ 'Link','Unlink','Anchor' ]
+                - [ 'Image','Flash','Table','HorizontalRule','Smiley','SpecialChar','PageBreak','Iframe' ]
+                - [ 'Styles','Format','Font','FontSize' ]
+                - [ 'TextColor','BGColor' ]
+                - [ 'Maximize', 'ShowBlocks','-','About' ]
 
 fm_elfinder:
     #assets_path: / # default is /assets, this is where css/js elfinder files are

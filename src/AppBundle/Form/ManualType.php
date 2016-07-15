@@ -30,7 +30,7 @@ class ManualType extends AbstractType
                         'instance' => 'default',
                         'homeFolder' => ''
                     )
-                ),
+                )
             ))
             ->add('cover',null,array(
                 'label' => 'MSG.cover',
